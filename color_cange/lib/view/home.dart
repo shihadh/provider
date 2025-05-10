@@ -1,5 +1,6 @@
 import 'package:color_cange/model/provider_model.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> {
               height: 200,
               color: value.color,
             ),
+            Gap(10),
             ElevatedButton(onPressed: value.changer, child: Text("chager"))
           ],
         ),
