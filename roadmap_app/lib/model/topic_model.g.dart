@@ -8,7 +8,7 @@ part of 'topic_model.dart';
 
 class TopicModelAdapter extends TypeAdapter<TopicModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   TopicModel read(BinaryReader reader) {

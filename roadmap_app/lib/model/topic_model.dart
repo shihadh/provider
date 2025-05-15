@@ -1,7 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 part 'topic_model.g.dart';
 
-  @HiveType(typeId: 0)
+  @HiveType(typeId: 1)
 
 class TopicModel {
 
@@ -16,7 +16,7 @@ class TopicModel {
 
     TopicModel({
       required this.tittle,
-      required this.isdone,
+      this.isdone =false,
       required this.description
     });
 

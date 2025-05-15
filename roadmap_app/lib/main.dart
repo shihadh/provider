@@ -4,13 +4,14 @@ import 'package:roadmap_app/model/topic_model.dart';
 import 'package:roadmap_app/model/week_model.dart';
 import 'package:provider/provider.dart';
 import 'package:roadmap_app/view/screens/mobile/mob_home.dart';
+import 'package:roadmap_app/viewmodels/week_provider.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Hive.initFlutter();
-  // Hive.registerAdapter(WeekModelAdapter());
-  // Hive.registerAdapter(TopicModelAdapter());
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(WeekModelAdapter());
+  Hive.registerAdapter(TopicModelAdapter());
+  runApp(ChangeNotifierProvider(create: (context) => WeekProvider(),child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
