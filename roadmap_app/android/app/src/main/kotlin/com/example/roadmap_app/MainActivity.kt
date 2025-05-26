@@ -1,4 +1,4 @@
-package com.example.roadmap_app
+package com.example.roadmap
 
 import io.flutter.embedding.android.FlutterActivity
 

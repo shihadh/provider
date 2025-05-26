@@ -3,7 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:roadmap_app/model/topic_model.dart';
 import 'package:roadmap_app/model/week_model.dart';
 import 'package:provider/provider.dart';
-import 'package:roadmap_app/view/screens/mobile/mob_home.dart';
+import 'package:roadmap_app/view/screens/splash.dart';
 import 'package:roadmap_app/viewmodels/week_provider.dart';
 
 void main() async{
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MobHome(),
+      home: SplashSccreen(),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
-import 'package:roadmap_app/model/topic_model.dart';
 import 'package:roadmap_app/model/week_model.dart';
+import 'package:roadmap_app/utis/const.dart';
+import 'package:roadmap_app/view/widgets/widgets.dart';
 import 'package:roadmap_app/viewmodels/week_provider.dart';
 
 class MobTopicsScreen extends StatefulWidget {
@@ -25,14 +25,18 @@ class _MobTopicsScreenState extends State<MobTopicsScreen> {
     final weekprovider = Provider.of<WeekProvider>(context);
     final topics =weekprovider.weeks[widget.weekIndex].topics ?? [];
     return Scaffold(
+      backgroundColor: ColorBox.secondary,
       floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
         onPressed:(){
            weekprovider.alert(context,name,description,widget.weekIndex);
            },
-           backgroundColor: Colors.indigoAccent,
-      child: Icon(Icons.add),),
+           backgroundColor: ColorBox.primary,
+      child: Icon(Icons.add,color: ColorBox.secondary,),),
       appBar: AppBar(
-        title: Text(widget.week.name ?? ""),
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: ColorBox.secondary,
+        title: textbold(title:  widget.week.name ?? "",color: ColorBox.normal),
       ),
       body: ListView.separated(
        itemCount: topics.length,
@@ -42,12 +46,12 @@ class _MobTopicsScreenState extends State<MobTopicsScreen> {
          return Padding(
            padding: const EdgeInsets.all(16.0),
            child: Card(
-            color: Colors.white,
+            color: ColorBox.secondary,
             elevation: 2,
              child: Column(
                children: [
                  ListTile(
-                    title: Text(topic.tittle ?? ""),
+                    title: textbold(title: topic.tittle ?? "",color: ColorBox.normal),
                     subtitle: Text(topic.description ?? ""),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -55,7 +59,7 @@ class _MobTopicsScreenState extends State<MobTopicsScreen> {
                         Checkbox(value: topic.isdone, onChanged: (value){
                           weekprovider.toggleDone(widget.weekIndex, index, value);
                         },
-                    activeColor: Colors.blue,
+                    activeColor: ColorBox.primary,
                     ),
                       ],
                     ),
@@ -65,11 +69,11 @@ class _MobTopicsScreenState extends State<MobTopicsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      child: TextButton(onPressed: (){weekprovider.deletetopic(widget.weekIndex,index);}, child: Text("Delete")),
+                      child: TextButton(onPressed: (){weekprovider.conform2(context, index, widget.weekIndex);}, child: textbold(title: Texts.modify1, color: ColorBox.primary)),
                     ),
                     SizedBox(height: 55 ,child: VerticalDivider()),
                     SizedBox(
-                      child: TextButton(onPressed: (){}, child: Text("Update")),
+                      child: TextButton(onPressed: (){weekprovider.updateAlert(context,name,description,widget.weekIndex,index,weekprovider.weeks);}, child: textbold(title: Texts.modify2, color: ColorBox.primary)),
                     )
                   ],
                  )

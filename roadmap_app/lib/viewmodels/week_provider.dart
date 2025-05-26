@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:roadmap_app/model/topic_model.dart';
 import 'package:roadmap_app/model/week_model.dart';
 import 'package:roadmap_app/utis/default_data.dart';
+import 'package:roadmap_app/view/screens/home.dart';
+import 'package:roadmap_app/view/widgets/widgets.dart';
 
 class WeekProvider extends ChangeNotifier{
   List<WeekModel> weeks=[];
+  WeekModel? seletedweek;
+  int? seletedIndex;
+
+  void selectweek(WeekModel week, int index){
+    seletedweek=week;
+    seletedIndex=index;
+    notifyListeners();
+
+  }
+
+  Future<void> splash(BuildContext context)async{
+    await Future.delayed(Duration(seconds: 3));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
+  }
 
   Future<void>getweek()async{
     final db=await Hive.openBox<WeekModel>("weekbox");
@@ -16,6 +31,7 @@ class WeekProvider extends ChangeNotifier{
       for(var week in defaultData){
         db.add(week);
       }
+      notifyListeners();
     }else{
       weeks=db.values.toList();
     }
@@ -26,12 +42,14 @@ class WeekProvider extends ChangeNotifier{
   Future<void>addweek(WeekModel weekvalues)async{
     final db =await Hive.openBox<WeekModel>("weekbox");
     db.add(weekvalues);
+    weeks =db.values.toList();
     notifyListeners();
   }
 
   Future<void>deleteweek(int index)async{
     final db=await Hive.openBox<WeekModel>("weekbox");
     db.deleteAt(index);
+    weeks =db.values.toList();
     notifyListeners();
   }
 
@@ -105,65 +123,29 @@ Future<void> toggleDone(int weekIndex, int topicIndex, bool? isDone) async {
   }
 
 void alert(BuildContext context, TextEditingController name, TextEditingController description,int weekIndex){
-    showDialog(context: context, builder:(context) => AlertDialog(
-      title: Text("Add Topic"),
-      actions: [
-        Column(
-          children: [
-            TextField(
-              controller: name,
-              decoration: InputDecoration(
-                hintText: "Name",
-               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue))
-              ),
-            ),
-            Gap(10),
-             TextField(
-              controller: description,
-              maxLines: null,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                hintText: "Description",
-               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue))
-              ),
-            ),
-            Gap(15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(onPressed: (){Navigator.pop(context);}, child:Text('Cancel',style: TextStyle(color: Colors.indigoAccent,fontWeight: FontWeight.bold))),
-                Gap(10),
-                ElevatedButton(
-                  
-                  onPressed: ()async{
-                    if(name.text.trim().isNotEmpty || description.text.trim().isNotEmpty){
-                      final topic = TopicModel(
-                        tittle: name.text.trim(), description: description.text.trim(),isdone: false);
-                         Provider.of<WeekProvider>(context,listen: false).addtopic(weekIndex, topic);
-                          name.clear();
-                          description.clear();
-                          Navigator.pop(context);
-                    }
-                   
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                      backgroundColor:Colors.indigoAccent), 
-                      child:Text('Add',style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                        ),
-                        )
-              ],
-            )
-          ],
-        )
-      ],
-      
-      ),);
+    showDialog(context: context, builder:(context) => alretbox(name, description, context, weekIndex),);
+    
   }
+  void updateAlert(BuildContext context, TextEditingController name, TextEditingController description,int weekIndex, int topicIndex,List<WeekModel> weeks){
+    showDialog(context: context, builder: (context) => updateBox(name, description, context, weekIndex, topicIndex, weeks),);
+  }
+
+  void conform1(BuildContext context, int index){
+    showDialog(
+      context: context,
+      builder: (context) {
+          return conformAlert(context, index,providerFuntion: (){Provider.of<WeekProvider>(context,listen: false).deleteweek(index);});
+        }
+      );
+  }
+  void conform2(BuildContext context, int index, int weekIndex){
+    showDialog(
+      context: context,
+      builder: (context) {
+          return conformAlert(context, index,providerFuntion:(){Provider.of<WeekProvider>(context,listen: false).deletetopic(weekIndex,index);});
+        }
+      );
+  }
+
 
 }
