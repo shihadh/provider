@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sum/screens/home/circle_widget.dart';
+import 'package:sum/screens/home/text_widget.dart';
 import 'package:sum/view_model/provider_model.dart';
 
 class Home extends StatefulWidget {
@@ -33,9 +35,9 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 12,),
             ElevatedButton(onPressed: (){
-              Provider.of<ProviderModel>(context,listen: false).add(context);},
+              Provider.of<ProviderModel>(context,listen: false).add(context,true);},
               style: ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent),
-              child:context.watch<ProviderModel>().changed,
+              child:context.watch<ProviderModel>().status ==false ?TextWidget() :CircleWidget(),
               )
           ],
         ),

@@ -9,14 +9,14 @@ class ProviderModel extends ChangeNotifier{
   String sum1="";
   String sum2="";
   String result="";
-  Widget changed =TextWidget();
+  bool status = false;
 
-  Future<void> add(context)async{
+  Future<void> add(context, stat)async{
     if(number1.text.isNotEmpty && number2.text.isNotEmpty){
-    changed=CircleWidget();
+      status=stat;
     notifyListeners();
     await Future.delayed(Duration(seconds: 3));
-    changed=TextWidget();
+    status=false;
     sum1 = number1.text;
     sum2 =number2.text;
     int s1=int.parse(sum1);
