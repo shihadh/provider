@@ -68,25 +68,18 @@ Login	Booking	Checkout
 
 📌 Screenshots are stored inside the screenshots/ folder.
 
-## 📸 Screenshots
+<p float="left">
+  <img src="assets/screenshots/into.png" width="250" />
+  <img src="assets/screenshots/login.png" width="250" />
+  <img src="assets/screenshots/home.png" width="250" />
+</p>
 
-### Into Screen
-![Into Screen](assets/screenshots/into.png)
+<p float="left">
+  <img src="assets/screenshots/detailes.png" width="250" />
+  <img src="assets/screenshots/bookingForm.png" width="250" />
+  <img src="assets/screenshots/summary.png" width="250" />
+</p>
 
-### Login Screen
-![Login Screen](assets/screenshots/login.png)
-
-### Home Screen
-![Home Screen](assets/screenshots/home.png)
-
-### Detailes Screen
-![Detailes Screen](assets/screenshots/detailes.png)
-
-### Booking Form
-![Booking From](/assets/screenshots/bookingForm.png)
-
-### Checkout Screen
-![Checkout Screen](/assets/screenshots/summary.png)
 
 🚀 How to Run the App
 1️⃣ Clone the repository
@@ -108,47 +101,48 @@ An emulator or physical device is connected
 
 📂 Project Structure (Simplified)
 assets/
- ├── images/
- └── screenshots/
+├── images/
+└── screenshots/
 
 lib/
- ├── core/
- │   ├── constants/
- │   └── theme/
- │
- ├── features/
- │   ├── login/
- │   │   ├── view/
- │   │   ├── controller/
- │   │   ├── model/
- │   │   └── widgets/
- │   │
- │   ├── home/
- │   │   ├── view/
- │   │   ├── controller/
- │   │   ├── model/
- │   │   └── widgets/
- │   │
- │   ├── bookingForm/
- │   │   ├── view/
- │   │   ├── controller/
- │   │   ├── model/
- │   │   └── widgets/
- │   │
- │   ├── confirmPage/
- │   │   ├── view/
- │   │   ├── controller/
- │   │   ├── model/
- │   │   └── widgets/
- │   │
- │   ├── common/
- │   │   ├── auth/
- │   │   └── intro/
- │   │
- │   └── shared/
- │       └── model/
- │
- └── main.dart
+├── core/
+│   ├── constants/
+│   └── theme/
+│
+├── features/
+│   ├── login/
+│   │   ├── view/
+│   │   ├── controller/
+│   │   ├── model/
+│   │   └── widgets/
+│   │
+│   ├── home/
+│   │   ├── view/
+│   │   ├── controller/
+│   │   ├── model/
+│   │   └── widgets/
+│   │
+│   ├── bookingForm/
+│   │   ├── view/
+│   │   ├── controller/
+│   │   ├── model/
+│   │   └── widgets/
+│   │
+│   ├── confirmPage/
+│   │   ├── view/
+│   │   ├── controller/
+│   │   ├── model/
+│   │   └── widgets/
+│   │
+│   ├── common/
+│   │   ├── auth/
+│   │   └── intro/
+│   │
+│   └── shared/
+│       └── model/
+│
+└── main.dart
+
 
 📌 Notes
 
