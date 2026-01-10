@@ -1,3 +1,4 @@
+import 'package:car_rental/core/constants/text_const.dart';
 import 'package:car_rental/core/theme/color_const.dart';
 import 'package:flutter/material.dart';
 
@@ -59,10 +60,10 @@ class CarRentalBottomBar extends StatelessWidget {
               ),
             ),
             onPressed: onRentNowPressed,
-            child: const Text(
-              "Rent Now",
+            child: Text(
+              TextConst.home['rent']!,
               style: TextStyle(
-                color: Colors.white,
+                color: ColorConst.white,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),

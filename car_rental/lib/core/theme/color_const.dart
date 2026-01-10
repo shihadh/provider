@@ -10,7 +10,7 @@ class ColorConst {
   static const Color buttonBg = Colors.white;
   static const Color buttonText = Colors.black;
 
-  static const Color primaryColor = Color.fromARGB(255, 248, 249, 250);
+  static const Color primaryColor = Color(0xFFF5F5F5);
 
   //home
   static const Color grey = Colors.grey;

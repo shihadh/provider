@@ -1,6 +1,7 @@
 import 'package:car_rental/core/theme/color_const.dart';
+import 'package:car_rental/features/bookingForm/view/booking_page.dart';
 import 'package:car_rental/features/details/controller/car_detailes_controller.dart';
-import 'package:car_rental/features/home/model/car_model.dart';
+import 'package:car_rental/features/shared/model/car_model.dart';
 import 'package:car_rental/features/details/widgets/car_detail_app_bar.dart';
 import 'package:car_rental/features/details/widgets/car_header_section.dart';
 import 'package:car_rental/features/details/widgets/car_image_carousel.dart';
@@ -98,7 +99,9 @@ class CarDetailes extends StatelessWidget {
           /// 🔹 BOTTOM BAR
           CarRentalBottomBar(
             pricePerDay: car.pricePerDay.toString(),
-            onRentNowPressed: () {},
+            onRentNowPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BookingPage(car: car),));
+            },
           ),
         ],
       ),

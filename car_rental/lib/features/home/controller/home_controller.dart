@@ -1,6 +1,6 @@
 import 'package:car_rental/core/constants/image_const.dart';
 import 'package:car_rental/features/home/model/brand_model.dart';
-import 'package:car_rental/features/home/model/car_model.dart';
+import 'package:car_rental/features/shared/model/car_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeController extends ChangeNotifier{

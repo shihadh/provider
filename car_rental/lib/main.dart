@@ -1,3 +1,4 @@
+import 'package:car_rental/features/common/auth/controller/auth_controller.dart';
 import 'package:car_rental/features/common/intro/view/intro_page.dart';
 import 'package:car_rental/features/details/controller/car_detailes_controller.dart';
 import 'package:car_rental/features/home/controller/home_controller.dart';
@@ -11,6 +12,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (context) => HomeController(),),
       ChangeNotifierProvider(create: (context) => CarDetailesController(),),
+      ChangeNotifierProvider(create: (context) => AuthController(),),
     ],
     child: MyApp()));
 }
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
       ),
 
       home: const CarOnboardingPage(),
+
     );
   }
 }

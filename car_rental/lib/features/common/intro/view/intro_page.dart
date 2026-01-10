@@ -1,6 +1,7 @@
 import 'package:car_rental/core/constants/image_const.dart';
 import 'package:car_rental/core/constants/text_const.dart';
 import 'package:car_rental/core/theme/color_const.dart';
+import 'package:car_rental/features/common/auth/view/login.dart';
 import 'package:car_rental/features/home/view/home.dart';
 import 'package:flutter/material.dart';
 
@@ -125,7 +126,7 @@ class CarOnboardingPage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
             },
             child: Text(
               TextConst.onboarding['button']!,

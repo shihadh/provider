@@ -21,7 +21,7 @@ class CarDetailAppBar  extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _iconButton(
-            icon: Icons.arrow_back_ios_new,
+            icon: Icons.arrow_back,
             onTap: onBackPressed,
           ),
           _iconButton(

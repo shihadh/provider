@@ -1,5 +1,5 @@
 import 'package:car_rental/core/theme/color_const.dart';
-import 'package:car_rental/features/home/model/car_model.dart';
+import 'package:car_rental/features/shared/model/car_model.dart';
 import 'package:flutter/material.dart';
 
 class CarRenterSection extends StatelessWidget {
